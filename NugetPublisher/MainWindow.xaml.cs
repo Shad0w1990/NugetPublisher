@@ -20,6 +20,7 @@ namespace NugetPublisher
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             messageBox = new WinMess();
             //modalDialog.SetParent(MainView);
             //splashScrean.SetParent(MainView);

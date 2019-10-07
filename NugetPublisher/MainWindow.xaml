@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NugetPublisher"
+      
         xmlns:controls="clr-namespace:NugetPublisher"
         mc:Ignorable="d"
         Title="Publisher" Height="450" Width="831" Closing="Window_Closing" >
