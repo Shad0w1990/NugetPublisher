@@ -1,0 +1,1 @@
+nuget delete MyPackage 1.0 -Source http://package.contoso.com/source -apikey A1B2C3
