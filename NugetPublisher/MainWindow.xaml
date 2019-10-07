@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NugetPublisher"
         xmlns:controls="clr-namespace:NugetPublisher"
         mc:Ignorable="d"
-        Title="Publisher" Height="450" Width="831" >
+        Title="Publisher" Height="450" Width="831" Closing="Window_Closing" >
     <Window.Resources>
 
         <Style x:Key="btn" TargetType="{x:Type Button}">
@@ -117,11 +117,12 @@
     <Grid>
         <Grid x:Name="MainView">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="22*"/>
+                <ColumnDefinition Width="65*"/>
                 <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="255*"/>  
+                <ColumnDefinition Width="670*"/>
+                <ColumnDefinition Width="88*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="آدرس فایل Nuget :" Style="{StaticResource lbl}" Grid.Column="2" HorizontalAlignment="Left"  Margin="591,90,0,0" VerticalAlignment="Top"    />
+            <Label Content="آدرس فایل Nuget :" Style="{StaticResource lbl}" Grid.Column="2" HorizontalAlignment="Left"  Margin="591,90,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"    />
 
             <Button x:Name="btnFileBrowser" Style="{StaticResource btn}" Content="انتخاب فایل" Padding="5px"  Click="btnFileBrowser_Click"  Grid.Column="2" HorizontalAlignment="Left" Margin="75,93,0,0" VerticalAlignment="Top"  Height="33" Width="83"/>
 
@@ -129,16 +130,16 @@
 
        Visibility="Visible" HorizontalAlignment="Left"  Padding="5px" Name="txtAddressNuget" Margin="194,93,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="384" Height="31"/>
             <TextBox Grid.Column="2" Style="{StaticResource txt}" Visibility="Visible" HorizontalAlignment="Left" Margin="194,156,0,0" Padding="5px" Name="txtServerAddress" TextAlignment="Justify" Text="http://nuget.samanpro.ir/nuget" TextWrapping="Wrap" VerticalAlignment="Top" Width="383" Height="34" FontFamily="Tahoma" FontSize="14"/>
-            <Label Style="{StaticResource lbl}"  Content="آدرس سرور Nuget :" Grid.Column="2"  HorizontalAlignment="Left" Margin="592,156,0,0" VerticalAlignment="Top"  />
+            <Label Style="{StaticResource lbl}"  Content="آدرس سرور Nuget :" Grid.Column="2"  HorizontalAlignment="Left" Margin="592,156,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"  />
             <Button Style="{StaticResource btn}" Content="بارگزاری" Grid.Column="2" HorizontalAlignment="Left" Name="btnPublish" Margin="307,343,0,0" VerticalAlignment="Top" Height="49" Width="158"   FontWeight="Bold" FontSize="18" FontFamily="B Nazanin" Click="btnPublish_Click"/>
-            <Label Style="{StaticResource lbl}" Content=" کد امنیتی سرور :" Grid.Column="2"  HorizontalAlignment="Left" Margin="591,217,0,0" VerticalAlignment="Top" />
+            <Label Style="{StaticResource lbl}" Content=" کد امنیتی سرور :" Grid.Column="2"  HorizontalAlignment="Left" Margin="591,217,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
             <PasswordBox Style="{StaticResource txtpass}" Grid.Column="2"  HorizontalAlignment="Left" Margin="194,217,0,0" Padding="5px"  Name="txtApiKey"  VerticalAlignment="Top" Width="383" Height="34"/>
-            <Label  Content="توجه داشته باشید درصورت عدم تنظیم سرویس Nuget برنامه به درستی اجرا نخواهد شد" Padding="3px" Foreground="Red" HorizontalAlignment="Left" Margin="60,290,0,0" FlowDirection="RightToLeft" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontFamily="B Nazanin" FontSize="16" Width="736" Grid.ColumnSpan="3"/>
+            <Label  Content="توجه داشته باشید درصورت عدم تنظیم سرویس Nuget برنامه به درستی اجرا نخواهد شد" Padding="3px" Foreground="Red" HorizontalAlignment="Left" Margin="60,290,0,0" FlowDirection="RightToLeft" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontFamily="B Nazanin" FontSize="16" Width="736" Grid.ColumnSpan="4"/>
             <Button  Style="{StaticResource btn}" Content="راهنمایی تنظیم سرویس Nuget"  Grid.Column="2" Name="btnHelp" HorizontalAlignment="Left" Padding="5px" Margin="25,10,0,0" VerticalAlignment="Top" Click="ShowModalDialog_Click" Height="33" Width="200"/>
 
         </Grid>
-    
-        
+
+
         <local:ModalDialog  x:Name="modalDialog"/>
     </Grid>
 </Window>

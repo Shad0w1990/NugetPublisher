@@ -153,5 +153,10 @@ namespace NugetPublisher
             txtAddressNuget.Text = string.Format("{0}", ((string[])text)[0]);
             
         }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            messageBox.Close();
+        }
     }
 }
