@@ -96,7 +96,7 @@
         </Style>
 
         <Style x:Key="txtpass" TargetType="{x:Type PasswordBox}">
-            <Setter Property="FlowDirection" Value="RightToLeft"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Template">
                 <Setter.Value>
