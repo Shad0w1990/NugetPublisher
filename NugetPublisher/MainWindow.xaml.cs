@@ -7,6 +7,7 @@ using System.Management.Automation.Runspaces;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace NugetPublisher
 {
@@ -113,25 +114,37 @@ namespace NugetPublisher
             //var res = modalDialog.ShowHandlerDialog();
             messageBox.Show();
 
-
         }
 
+        //private void txtAddressNuget_Drop(object sender, DragEventArgs e)
+        //{
+        //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
+        //    {
+        //        // Note that you can have more than one file.
+        //        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+        //        MessageBox.Show( files[0]); 
+        //        // Assuming you have one file that you care about, pass it off to whatever
+        //        // handling code you have defined.
+
+        //    }
+        //}
         private void txtAddressNuget_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                // Note that you can have more than one file.
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                MessageBox.Show( files[0]); 
-                // Assuming you have one file that you care about, pass it off to whatever
-                // handling code you have defined.
-
+                string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
+                if (files != null && files.Length > 0)
+                {
+                    ((TextBox)sender).Text = files[0];
+                }
             }
         }
-        private void txtAddressNuget_PreviewDragEnter(object sender, DragEventArgs e)
+
+        private void txtAddressNuget_PreviewDragOver(object sender, DragEventArgs e)
         {
-           
+            e.Handled = true;
         }
+      
 
         private void txtAddressNuget_PreviewDrop(object sender, DragEventArgs e)
         {
