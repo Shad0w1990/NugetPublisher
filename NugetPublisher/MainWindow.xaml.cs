@@ -1,24 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NugetPublisher
 {
@@ -27,11 +15,11 @@ namespace NugetPublisher
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public static ModalDialog modeldialog;
+        public static WinMess messageBox;
         public MainWindow()
         {
             InitializeComponent();
-           
+            messageBox = new WinMess();
             modalDialog.SetParent(MainView);
             //splashScrean.SetParent(MainView);
            
@@ -59,7 +47,7 @@ namespace NugetPublisher
                 else
                 {
                     //  splashScrean.ShowHandlerDialog();
-                      Wating();
+                    
                     string pathnuget = txtAddressNuget.Text;
                     string command = $"nuget push {pathnuget} -source {txtServerAddress.Text} {txtApiKey.Password}";
 
@@ -83,23 +71,10 @@ namespace NugetPublisher
             }
             
         }
-        private void OnDoWork(object o, DoWorkEventArgs args)
-        {
-            Task.Delay(2000).Wait(); // Pretend to work
-        }
+       
 
-        private void OnRunWorkerCompleted(object o, RunWorkerCompletedEventArgs args)
-        {
-            loadingGif.Visibility = Visibility.Hidden;
-        }
-        private void Wating()
-        {
-            loadingGif.Visibility = Visibility.Visible;
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.DoWork += OnDoWork;
-            worker.RunWorkerCompleted += OnRunWorkerCompleted;
-            worker.RunWorkerAsync();
-        }
+       
+       
 
         private string RunScript(string scriptText)
         {
@@ -135,9 +110,10 @@ namespace NugetPublisher
         }
         private void ShowModalDialog_Click(object sender, RoutedEventArgs e)
         {
-            var res = modalDialog.ShowHandlerDialog();
-          
-          
+            //var res = modalDialog.ShowHandlerDialog();
+            messageBox.Show();
+
+
         }
 
         private void txtAddressNuget_Drop(object sender, DragEventArgs e)

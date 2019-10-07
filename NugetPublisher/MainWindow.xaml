@@ -8,50 +8,50 @@
         mc:Ignorable="d"
         Title="Publisher" Height="450" Width="831" >
     <Window.Resources>
-       
-            <Style x:Key="btn" TargetType="{x:Type Button}">
+
+        <Style x:Key="btn" TargetType="{x:Type Button}">
             <Setter Property="Background">
                 <Setter.Value>
-          
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF4E9C6D" Offset="0.5"/>
-                    <GradientStop Color="#FF898989" Offset="1"/>
-                    <GradientStop Color="#FF898989"/>
-                </LinearGradientBrush>
-         
+
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4E9C6D" Offset="0.5"/>
+                        <GradientStop Color="#FF898989" Offset="1"/>
+                        <GradientStop Color="#FF898989"/>
+                    </LinearGradientBrush>
+
                 </Setter.Value>
             </Setter>
             <Setter Property="Foreground" Value="White"/>
 
             <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="bg" Padding="0,0,0,3" Background="{TemplateBinding Background}" BorderThickness="3" CornerRadius="5" BorderBrush="Gainsboro" >
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background"  TargetName="bg" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg" Padding="0,0,0,3" Background="{TemplateBinding Background}" BorderThickness="3" CornerRadius="5" BorderBrush="Gainsboro" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background"  TargetName="bg" >
 
-                                        <Setter.Value>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FF26D86F" Offset="0.4"/>
-                                                <GradientStop Color="#FF898989" Offset="1"/>
-                                                <GradientStop Color="#FF898989" Offset="0"/>
-                                                <GradientStop Color="#FF26D86F" Offset="0.6"/>
-                                            </LinearGradientBrush>
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF26D86F" Offset="0.4"/>
+                                            <GradientStop Color="#FF898989" Offset="1"/>
+                                            <GradientStop Color="#FF898989" Offset="0"/>
+                                            <GradientStop Color="#FF26D86F" Offset="0.6"/>
+                                        </LinearGradientBrush>
 
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" Value="#FFC7C7C7" TargetName="bg"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFC7C7C7" TargetName="bg"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
         </Style>
         <Style x:Key="lbl"   TargetType="{x:Type Label}">
             <Setter Property="FlowDirection" Value="RightToLeft"/>
@@ -78,42 +78,42 @@
                 <Setter.Value>
                     <ControlTemplate  TargetType="{x:Type TextBox}" >
                         <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="BlueViolet" BorderThickness="3" >
-                        <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-3" Width="Auto" Height="Auto"  ></ScrollViewer>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{DynamicResource txt}" TargetName="Bd"/>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
+                            <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-3" Width="Auto" Height="Auto"  ></ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" Value="{DynamicResource txt}" TargetName="Bd"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-         <Style x:Key="txtpass" TargetType="{x:Type PasswordBox}">
+        <Style x:Key="txtpass" TargetType="{x:Type PasswordBox}">
             <Setter Property="FlowDirection" Value="RightToLeft"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate  TargetType="{x:Type PasswordBox}" >
-                    <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="BlueViolet" BorderThickness="3" >
-                        <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-3" Width="Auto" Height="Auto"  ></ScrollViewer>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{DynamicResource txtpass}" TargetName="Bd"/>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="BlueViolet" BorderThickness="3" >
+                            <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-3" Width="Auto" Height="Auto"  ></ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" Value="{DynamicResource txtpass}" TargetName="Bd"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
 
     </Window.Resources>
-    
+
     <Grid>
         <Grid x:Name="MainView">
             <Grid.ColumnDefinitions>
@@ -133,21 +133,12 @@
             <Button Style="{StaticResource btn}" Content="بارگزاری" Grid.Column="2" HorizontalAlignment="Left" Name="btnPublish" Margin="307,343,0,0" VerticalAlignment="Top" Height="49" Width="158"   FontWeight="Bold" FontSize="18" FontFamily="B Nazanin" Click="btnPublish_Click"/>
             <Label Style="{StaticResource lbl}" Content=" کد امنیتی سرور :" Grid.Column="2"  HorizontalAlignment="Left" Margin="591,217,0,0" VerticalAlignment="Top" />
             <PasswordBox Style="{StaticResource txtpass}" Grid.Column="2"  HorizontalAlignment="Left" Margin="194,217,0,0" Padding="5px"  Name="txtApiKey"  VerticalAlignment="Top" Width="383" Height="34"/>
-            <Label  Content="توجه داشته باشید درصورت عدم تنظیم سرویس Nuget برنامه به درستی اجرا نخواهد شد" Grid.Column="2" Padding="3px" Foreground="Red" HorizontalAlignment="Left" Margin="10,293,0,0" FlowDirection="RightToLeft" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontFamily="B Nazanin" FontSize="16" Width="736"/>
+            <Label  Content="توجه داشته باشید درصورت عدم تنظیم سرویس Nuget برنامه به درستی اجرا نخواهد شد" Padding="3px" Foreground="Red" HorizontalAlignment="Left" Margin="60,290,0,0" FlowDirection="RightToLeft" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontFamily="B Nazanin" FontSize="16" Width="736" Grid.ColumnSpan="3"/>
             <Button  Style="{StaticResource btn}" Content="راهنمایی تنظیم سرویس Nuget"  Grid.Column="2" Name="btnHelp" HorizontalAlignment="Left" Padding="5px" Margin="25,10,0,0" VerticalAlignment="Top" Click="ShowModalDialog_Click" Height="33" Width="200"/>
 
         </Grid>
-        <StackPanel Margin="20">
-            <Image
-        x:Name="loadingGif"
-        Height="307"
-        Source="Assets\wait.jpg"
-        Visibility="Hidden"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Right" Width="631" Margin="0,0,152,0" />
-
-        </StackPanel>
-        <!--<local:SplashScreen  x:Name="splashScrean"/>-->
+    
+        
         <local:ModalDialog  x:Name="modalDialog"/>
     </Grid>
 </Window>
