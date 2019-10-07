@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace NugetPublisher
 {
@@ -22,9 +23,10 @@ namespace NugetPublisher
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             messageBox = new WinMess();
+            messageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             //modalDialog.SetParent(MainView);
             //splashScrean.SetParent(MainView);
-           
+
         }
 
 
@@ -49,13 +51,17 @@ namespace NugetPublisher
                 else
                 {
                     //  splashScrean.ShowHandlerDialog();
-                    
+                    SplashScreen SS = new SplashScreen("Assets/wait.jpg");
+                    SS.Show(false);
+
+                   
+                   
                     string pathnuget = txtAddressNuget.Text;
                     string command = $"nuget push {pathnuget} -source {txtServerAddress.Text} {txtApiKey.Password}";
 
                     var s =Task.Run(() => RunScript(command)).Result;
                     //splashScrean.HideHandlerDialog();
-
+                    SS.Close(TimeSpan.FromSeconds(1));
                     if (string.IsNullOrEmpty(s.Trim()))
                     {
                         MessageBox.Show("خطا در اطلاعات ورودی، لطفا اطلاعات ورودی را بررسی کنید");
