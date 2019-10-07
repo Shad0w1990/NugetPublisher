@@ -8,87 +8,109 @@
         mc:Ignorable="d"
         Title="Publisher" Height="450" Width="831" >
     <Window.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#373737" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="15" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-
-            <Setter Property="Template">
+       
+            <Style x:Key="btn" TargetType="{x:Type Button}">
+            <Setter Property="Background">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
-                            <Grid>
-                                <Path x:Name="PathIcon" Width="15" Height="25" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Margin="17,0,0,0" />
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
-                            </Grid>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E59400" />
-                                <Setter Property="Foreground" Value="White" />
-                                <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="OrangeRed" />
-                                <Setter Property="Foreground" Value="White" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
+          
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4E9C6D" Offset="0.5"/>
+                    <GradientStop Color="#FF898989" Offset="1"/>
+                    <GradientStop Color="#FF898989"/>
+                </LinearGradientBrush>
+         
                 </Setter.Value>
             </Setter>
+            <Setter Property="Foreground" Value="White"/>
+
+            <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="bg" Padding="0,0,0,3" Background="{TemplateBinding Background}" BorderThickness="3" CornerRadius="5" BorderBrush="Gainsboro" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background"  TargetName="bg" >
+
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF26D86F" Offset="0.4"/>
+                                                <GradientStop Color="#FF898989" Offset="1"/>
+                                                <GradientStop Color="#FF898989" Offset="0"/>
+                                                <GradientStop Color="#FF26D86F" Offset="0.6"/>
+                                            </LinearGradientBrush>
+
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#FFC7C7C7" TargetName="bg"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            
         </Style>
-
-        <Style x:Key="lbl" TargetType="{x:Type Label}" >
-            <Setter Property="FontFamily" Value="B Nazanin"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="16"/>
+        <Style x:Key="lbl"   TargetType="{x:Type Label}">
             <Setter Property="FlowDirection" Value="RightToLeft"/>
-
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="Width" Value="140"/>
-            <Setter Property="Height" Value="34"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Label}">
-                        <Grid>
-                            <Rectangle x:Name="TitleBox" Fill="#FF54DEEC" Canvas.Right="39"  Canvas.Top="60" Width="140" Height="Auto" Margin="-10,-9,2,-5" >
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <LinearGradientBrush.RelativeTransform>
-                                            <TransformGroup >
-                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </LinearGradientBrush.RelativeTransform>
-                                        <GradientStop Color="#FF787878" Offset="0.4"/>
-                                        <GradientStop Color="White" Offset="0.5"/>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
-                            </Rectangle>
-                            <ContentPresenter HorizontalAlignment="Left" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Grid>
+                        <Border  Padding="0 0 0 0" CornerRadius="15" Width="140" Height="40" BorderThickness="4" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFACB3B4" Offset="0.904"/>
+                                    <GradientStop Color="#FF90A7E2" Offset="0.5"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="TransformerBox" TargetType="{x:Type TextBox}">
+        <Style x:Key="txt"   TargetType="{x:Type TextBox}">
+            <Setter Property="FlowDirection" Value="RightToLeft"/>
+            <Setter Property="Height" Value="40"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
+                    <ControlTemplate  TargetType="{x:Type TextBox}" >
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="BlueViolet" BorderThickness="3" >
+                        <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-3" Width="Auto" Height="Auto"  ></ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{DynamicResource txt}" TargetName="Bd"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+         <Style x:Key="txtpass" TargetType="{x:Type PasswordBox}">
+            <Setter Property="FlowDirection" Value="RightToLeft"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate  TargetType="{x:Type PasswordBox}" >
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="BlueViolet" BorderThickness="3" >
+                        <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-3" Width="Auto" Height="Auto"  ></ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{DynamicResource txtpass}" TargetName="Bd"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
 
     </Window.Resources>
     
@@ -101,18 +123,18 @@
             </Grid.ColumnDefinitions>
             <Label Content="آدرس فایل Nuget :" Style="{StaticResource lbl}" Grid.Column="2" HorizontalAlignment="Left"  Margin="591,90,0,0" VerticalAlignment="Top"    />
 
-            <Button x:Name="btnFileBrowser" Content="انتخاب فایل" Padding="5px"  Click="btnFileBrowser_Click"  Grid.Column="2" HorizontalAlignment="Left" Margin="75,93,0,0" VerticalAlignment="Top" Background="#FF1191FB" Height="33" Width="83"/>
+            <Button x:Name="btnFileBrowser" Style="{StaticResource btn}" Content="انتخاب فایل" Padding="5px"  Click="btnFileBrowser_Click"  Grid.Column="2" HorizontalAlignment="Left" Margin="75,93,0,0" VerticalAlignment="Top"  Height="33" Width="83"/>
 
-            <TextBox Grid.Column="2" PreviewDragEnter="txtAddressNuget_PreviewDragEnter" PreviewDragOver="txtAddressNuget_PreviewDragEnter"
+            <TextBox Grid.Column="2" Style="{StaticResource txt}" PreviewDragEnter="txtAddressNuget_PreviewDragEnter" PreviewDragOver="txtAddressNuget_PreviewDragEnter"
 
        Visibility="Visible" HorizontalAlignment="Left" AllowDrop="true" PreviewDrop="txtAddressNuget_Drop" Drop="txtAddressNuget_Drop" Padding="5px" Name="txtAddressNuget" Margin="194,93,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="384" Height="31"/>
-            <TextBox Grid.Column="2"  Visibility="Visible" HorizontalAlignment="Left" Margin="194,156,0,0" Padding="5px" Name="txtServerAddress" TextAlignment="Justify" Text="http://nuget.samanpro.ir/nuget" TextWrapping="Wrap" VerticalAlignment="Top" Width="383" Height="34" FontFamily="Tahoma" FontSize="14"/>
+            <TextBox Grid.Column="2" Style="{StaticResource txt}" Visibility="Visible" HorizontalAlignment="Left" Margin="194,156,0,0" Padding="5px" Name="txtServerAddress" TextAlignment="Justify" Text="http://nuget.samanpro.ir/nuget" TextWrapping="Wrap" VerticalAlignment="Top" Width="383" Height="34" FontFamily="Tahoma" FontSize="14"/>
             <Label Style="{StaticResource lbl}"  Content="آدرس سرور Nuget :" Grid.Column="2"  HorizontalAlignment="Left" Margin="592,156,0,0" VerticalAlignment="Top"  />
-            <Button Content="بارگزاری" Grid.Column="2" HorizontalAlignment="Left" Name="btnPublish" Margin="307,343,0,0" VerticalAlignment="Top" Height="49" Width="158" Background="Black" Foreground="White" FontWeight="Bold" FontSize="18" FontFamily="B Nazanin" Click="btnPublish_Click"/>
+            <Button Style="{StaticResource btn}" Content="بارگزاری" Grid.Column="2" HorizontalAlignment="Left" Name="btnPublish" Margin="307,343,0,0" VerticalAlignment="Top" Height="49" Width="158"   FontWeight="Bold" FontSize="18" FontFamily="B Nazanin" Click="btnPublish_Click"/>
             <Label Style="{StaticResource lbl}" Content=" کد امنیتی سرور :" Grid.Column="2"  HorizontalAlignment="Left" Margin="591,217,0,0" VerticalAlignment="Top" />
-            <PasswordBox Grid.Column="2"  HorizontalAlignment="Left" Margin="194,217,0,0" Padding="5px"  Name="txtApiKey"  VerticalAlignment="Top" Width="383" Height="34"/>
-            <Label Content="توجه داشته باشید درصورت عدم تنظیم سرویس Nuget برنامه به درستی اجرا نخواهد شد" Grid.Column="2" Padding="3px" Foreground="Red" HorizontalAlignment="Left" Margin="10,293,0,0" FlowDirection="RightToLeft" VerticalAlignment="Top" Width="720" Height="30" FontWeight="Bold" FontFamily="B Nazanin" FontSize="16"/>
-            <Button Content="راهنمایی تنظیم سرویس Nuget" Grid.Column="2" Name="btnHelp" HorizontalAlignment="Left" FlowDirection="RightToLeft" Padding="5px" Margin="25,10,0,0" VerticalAlignment="Top" Click="ShowModalDialog_Click" Height="33" Width="200"/>
+            <PasswordBox Style="{StaticResource txtpass}" Grid.Column="2"  HorizontalAlignment="Left" Margin="194,217,0,0" Padding="5px"  Name="txtApiKey"  VerticalAlignment="Top" Width="383" Height="34"/>
+            <Label  Content="توجه داشته باشید درصورت عدم تنظیم سرویس Nuget برنامه به درستی اجرا نخواهد شد" Grid.Column="2" Padding="3px" Foreground="Red" HorizontalAlignment="Left" Margin="10,293,0,0" FlowDirection="RightToLeft" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontFamily="B Nazanin" FontSize="16" Width="736"/>
+            <Button  Style="{StaticResource btn}" Content="راهنمایی تنظیم سرویس Nuget"  Grid.Column="2" Name="btnHelp" HorizontalAlignment="Left" Padding="5px" Margin="25,10,0,0" VerticalAlignment="Top" Click="ShowModalDialog_Click" Height="33" Width="200"/>
 
         </Grid>
         <StackPanel Margin="20">
