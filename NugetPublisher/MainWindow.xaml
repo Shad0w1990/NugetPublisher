@@ -144,6 +144,6 @@
         </Grid>
 
 
-        <local:ModalDialog  x:Name="modalDialog"/>
+        <!--<local:ModalDialog  x:Name="modalDialog"/>-->
     </Grid>
 </Window>
