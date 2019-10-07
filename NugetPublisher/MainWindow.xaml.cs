@@ -116,18 +116,7 @@ namespace NugetPublisher
 
         }
 
-        //private void txtAddressNuget_Drop(object sender, DragEventArgs e)
-        //{
-        //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
-        //    {
-        //        // Note that you can have more than one file.
-        //        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-        //        MessageBox.Show( files[0]); 
-        //        // Assuming you have one file that you care about, pass it off to whatever
-        //        // handling code you have defined.
-
-        //    }
-        //}
+        
         private void txtAddressNuget_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -157,6 +146,11 @@ namespace NugetPublisher
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             messageBox.Close();
+        }
+
+        private void txtAddressNuget_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
