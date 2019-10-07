@@ -32,7 +32,7 @@ namespace NugetPublisher
 
         private void btnFileBrowser_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "NugetFile Files|*.nupkg"}; ;
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "NugetFile Files|*.nupkg" }; ;
             if (openFileDialog.ShowDialog() == true)
                 txtAddressNuget.Text = openFileDialog.FileName.Trim();
         }
@@ -41,25 +41,25 @@ namespace NugetPublisher
         {
             try
             {
-                if (string.IsNullOrEmpty(txtAddressNuget.Text)) 
-                 MessageBox.Show(owner: GetWindow(this), "لطفا آدرس فایل Nuget را انتخاب کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
-                    
+                if (string.IsNullOrEmpty(txtAddressNuget.Text))
+                    MessageBox.Show(owner: GetWindow(this), "لطفا آدرس فایل Nuget را انتخاب کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
+
                 else if (string.IsNullOrEmpty(txtServerAddress.Text))
                     MessageBox.Show(owner: GetWindow(this), "لطفا آدرس سرور Nuget را وارد کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
                 else if (string.IsNullOrEmpty(txtApiKey.Password))
-                    MessageBox.Show(owner: GetWindow(this), "لطفا شناسه سرور Nuget را وارد کنید","", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
+                    MessageBox.Show(owner: GetWindow(this), "لطفا شناسه سرور Nuget را وارد کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
                 else
                 {
                     //  splashScrean.ShowHandlerDialog();
                     SplashScreen SS = new SplashScreen("Assets/wait.jpg");
                     SS.Show(false);
 
-                   
-                   
+
+
                     string pathnuget = txtAddressNuget.Text;
                     string command = $"nuget push {pathnuget} -source {txtServerAddress.Text} {txtApiKey.Password}";
 
-                    var s =Task.Run(() => RunScript(command)).Result;
+                    var s = Task.Run(() => RunScript(command)).Result;
                     //splashScrean.HideHandlerDialog();
                     SS.Close(TimeSpan.FromSeconds(1));
                     if (string.IsNullOrEmpty(s.Trim()))
@@ -67,22 +67,24 @@ namespace NugetPublisher
                         MessageBox.Show("خطا در اطلاعات ورودی، لطفا اطلاعات ورودی را بررسی کنید");
                     }
                     else
+                    {
                         MessageBox.Show(s);
-
+                        txtAddressNuget.Text = "";
+                    }
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(owner: GetWindow(this), "لطفا از فعال سازی سرویس Nuget  برروی سیستم خود اطمینان حاصل نمایید","", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
-                
-            }
-            
-        }
-       
+                MessageBox.Show(owner: GetWindow(this), "لطفا از فعال سازی سرویس Nuget  برروی سیستم خود اطمینان حاصل نمایید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
 
-       
-       
+            }
+
+        }
+
+
+
+
 
         private string RunScript(string scriptText)
         {
@@ -123,7 +125,7 @@ namespace NugetPublisher
 
         }
 
-        
+
         private void txtAddressNuget_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -135,8 +137,9 @@ namespace NugetPublisher
                     {
                         ((TextBox)sender).Text = "";
                         MessageBox.Show("فقط فایل Nuget مجاز می باشد");
-                    }else
-                    ((TextBox)sender).Text = files[0];
+                    }
+                    else
+                        ((TextBox)sender).Text = files[0];
                 }
             }
         }
@@ -145,14 +148,14 @@ namespace NugetPublisher
         {
             e.Handled = true;
         }
-      
+
 
         private void txtAddressNuget_PreviewDrop(object sender, DragEventArgs e)
         {
             object text = e.Data.GetData(DataFormats.FileDrop);
 
             txtAddressNuget.Text = string.Format("{0}", ((string[])text)[0]);
-            
+
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
