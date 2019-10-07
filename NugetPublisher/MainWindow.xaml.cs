@@ -21,7 +21,7 @@ namespace NugetPublisher
         {
             InitializeComponent();
             messageBox = new WinMess();
-            modalDialog.SetParent(MainView);
+            //modalDialog.SetParent(MainView);
             //splashScrean.SetParent(MainView);
            
         }
@@ -124,6 +124,11 @@ namespace NugetPublisher
                 string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
                 if (files != null && files.Length > 0)
                 {
+                    if (!files[0].EndsWith(".nupkg"))
+                    {
+                        ((TextBox)sender).Text = "";
+                        MessageBox.Show("فقط فایل Nuget مجاز می باشد");
+                    }else
                     ((TextBox)sender).Text = files[0];
                 }
             }
