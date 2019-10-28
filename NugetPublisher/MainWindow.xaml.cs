@@ -42,12 +42,15 @@ namespace NugetPublisher
             try
             {
                 if (string.IsNullOrEmpty(txtAddressNuget.Text))
-                    MessageBox.Show(owner: GetWindow(this), "لطفا آدرس فایل Nuget را انتخاب کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
+                    MessageBox.Show(owner: GetWindow(this), "لطفا آدرس فایل Nuget را انتخاب کنید", "", 
+                        MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
 
                 else if (string.IsNullOrEmpty(txtServerAddress.Text))
-                    MessageBox.Show(owner: GetWindow(this), "لطفا آدرس سرور Nuget را وارد کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
+                    MessageBox.Show(owner: GetWindow(this), "لطفا آدرس سرور Nuget را وارد کنید", "",
+                        MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
                 else if (string.IsNullOrEmpty(txtApiKey.Password))
-                    MessageBox.Show(owner: GetWindow(this), "لطفا شناسه سرور Nuget را وارد کنید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
+                    MessageBox.Show(owner: GetWindow(this), "لطفا شناسه سرور Nuget را وارد کنید", "",
+                        MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
                 else
                 {
                     //  splashScrean.ShowHandlerDialog();
@@ -62,6 +65,7 @@ namespace NugetPublisher
                     var s = Task.Run(() => RunScript(command)).Result;
                     //splashScrean.HideHandlerDialog();
                     SS.Close(TimeSpan.FromSeconds(1));
+                    txtAddressNuget.Text = string.Empty;
                     if (string.IsNullOrEmpty(s.Trim()))
                     {
                         MessageBox.Show("خطا در اطلاعات ورودی، لطفا اطلاعات ورودی را بررسی کنید");
@@ -76,7 +80,8 @@ namespace NugetPublisher
             }
             catch (Exception ex)
             {
-                MessageBox.Show(owner: GetWindow(this), "لطفا از فعال سازی سرویس Nuget  برروی سیستم خود اطمینان حاصل نمایید", "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
+                MessageBox.Show(owner: GetWindow(this), "لطفا از فعال سازی سرویس Nuget  برروی سیستم خود اطمینان حاصل نمایید", "", 
+                    MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
 
             }
 
